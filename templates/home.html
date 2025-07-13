@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Real Estate - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay">
+        <nav class="navbar">
+            <div class="logo"><i class="fa-solid fa-building"></i>USA Real Estate</div>
+        </nav>
+
+        <div class="hero">
+            <h1>Welcome to USA Real Estate Predict</h1>
+            <p>Your trusted assistant for real estate insights and property price prediction</p>
+
+            <div class="card-container">
+                <div class="card">
+                    <i class="fa-solid fa-dollar-sign card-icon"></i>
+                    <h2>Predict Property Price</h2>
+                    <p>Find out the estimated price for any property based on real market data.</p>
+                    <a href="{{ url_for('predict') }}" class="btn">Start Prediction</a>
+                </div>
+
+                <div class="card">
+                    <i class="fa-solid fa-comments card-icon"></i>
+                    <h2>Ask a Real Estate Bot</h2>
+                    <p>Have questions? Our AI chatbot can help you with real estate queries.</p>
+                    <a href="{{ url_for('chat') }}" class="btn">Chat with Bot</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

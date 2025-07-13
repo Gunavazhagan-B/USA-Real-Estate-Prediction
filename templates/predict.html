@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USA Real Estate Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay">
+        <nav class="navbar">
+            <div class="logo">🏠 USA Real Estate</div>
+        </nav>
+
+        <div class="login">
+            <h1>Predict Property Price</h1>
+
+            {% set form_data = form_data or {} %}
+            <form action="{{ url_for('predict') }}" method="post">
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-user-tie"></i> Brokered By</label>
+                    <input type="number" name="brokered_by" placeholder="Enter brokered_by ID" required value="{{ form_data.brokered_by }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-bullhorn"></i> Status</label>
+                    <input type="text" name="status" list="status-list" placeholder="Select or type status" required value="{{ form_data.status }}">
+                    <datalist id="status-list">
+                        <option value="for_sale"></option>
+                        <option value="sold"></option>
+                        <option value="ready_to_build"></option>
+                    </datalist>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-bed"></i> Bedrooms</label>
+                    <input type="number" name="bed" placeholder="Number of bedrooms" required value="{{ form_data.bed }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-bath"></i> Bathrooms</label>
+                    <input type="number" name="bath" placeholder="Number of bathrooms" required value="{{ form_data.bath }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-tree"></i> Acre Lot</label>
+                    <input type="number" step="0.01" name="acre_lot" placeholder="Lot size in acres" required value="{{ form_data.acre_lot }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-road"></i> Street</label>
+                    <input type="text" id="street" name="street" placeholder="Street address" required value="{{ form_data.street }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-city"></i> City</label>
+                    <input type="text" name="city" list="city-list" placeholder="Select or type city" required value="{{ form_data.city }}">
+                    <datalist id="city-list">
+                        <option value="New York"></option>
+                        <option value="Los Angeles"></option>
+                        <option value="Chicago"></option>
+                        <option value="Houston"></option>
+                        <option value="Phoenix"></option>
+                        <option value="Philadelphia"></option>
+                        <option value="San Antonio"></option>
+                        <option value="San Diego"></option>
+                        <option value="Dallas"></option>
+                        <option value="San Jose"></option>
+                        <option value="Austin"></option>
+                        <option value="Jacksonville"></option>
+                        <option value="San Francisco"></option>
+                        <option value="Columbus"></option>
+                        <option value="Indianapolis"></option>
+                    </datalist>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-flag-usa"></i> State</label>
+                    <input type="text" name="state" list="state-list" placeholder="Select or type state" required value="{{ form_data.state }}">
+                    <datalist id="state-list">
+                        <option value="Alabama"></option>
+                        <option value="Alaska"></option>
+                        <option value="Arizona"></option>
+                        <option value="Arkansas"></option>
+                        <option value="California"></option>
+                        <option value="Colorado"></option>
+                        <option value="Connecticut"></option>
+                        <option value="Delaware"></option>
+                        <option value="Florida"></option>
+                        <option value="Georgia"></option>
+                        <option value="Hawaii"></option>
+                        <option value="Idaho"></option>
+                        <option value="Illinois"></option>
+                        <option value="Indiana"></option>
+                        <option value="Iowa"></option>
+                        <option value="Kansas"></option>
+                        <option value="Kentucky"></option>
+                        <option value="Louisiana"></option>
+                        <option value="Maine"></option>
+                        <option value="Maryland"></option>
+                        <option value="Massachusetts"></option>
+                        <option value="Michigan"></option>
+                        <option value="Minnesota"></option>
+                        <option value="Mississippi"></option>
+                        <option value="Missouri"></option>
+                        <option value="Montana"></option>
+                        <option value="Nebraska"></option>
+                        <option value="Nevada"></option>
+                        <option value="New Hampshire"></option>
+                        <option value="New Jersey"></option>
+                        <option value="New Mexico"></option>
+                        <option value="New York"></option>
+                        <option value="North Carolina"></option>
+                        <option value="North Dakota"></option>
+                        <option value="Ohio"></option>
+                        <option value="Oklahoma"></option>
+                        <option value="Oregon"></option>
+                        <option value="Pennsylvania"></option>
+                        <option value="Rhode Island"></option>
+                        <option value="South Carolina"></option>
+                        <option value="South Dakota"></option>
+                        <option value="Tennessee"></option>
+                        <option value="Texas"></option>
+                        <option value="Utah"></option>
+                        <option value="Vermont"></option>
+                        <option value="Virginia"></option>
+                        <option value="Washington"></option>
+                        <option value="West Virginia"></option>
+                        <option value="Wisconsin"></option>
+                        <option value="Wyoming"></option>
+                    </datalist>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-location-dot"></i> Zip Code</label>
+                    <input type="number" name="zip_code" placeholder="Zip Code" required value="{{ form_data.zip_code }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="fa-solid fa-ruler-combined"></i> House Size (sqft)</label>
+                    <input type="number" name="house_size" placeholder="Enter house size" required value="{{ form_data.house_size }}">
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Predict Property Price">
+                </div>
+            </form>
+
+            {% if results %}
+                <h2>The predicted property price is: ${{ results }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

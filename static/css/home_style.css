@@ -1,0 +1,112 @@
+/* General layout */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5dc; /* beige */
+}
+
+/* Overlay background */
+.overlay {
+    min-height: 100vh;
+    background-color: rgba(255, 255, 240, 0.95); /* soft creme */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background-color: #d8cfc4;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: #4b3f35;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Hero section */
+.hero {
+    max-width: 1000px;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    color: #3e342f;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #6b6055;
+    margin-bottom: 40px;
+}
+
+/* Card container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Individual cards */
+.card {
+    background-color: #fffaf0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Card icons */
+.card-icon {
+    font-size: 40px;
+    color: #c9b79c;
+    margin-bottom: 20px;
+}
+
+/* Card heading */
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #4e443c;
+}
+
+/* Card description */
+.card p {
+    font-size: 14px;
+    color: #7a6e63;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: #c9b79c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #b9a789;
+}
